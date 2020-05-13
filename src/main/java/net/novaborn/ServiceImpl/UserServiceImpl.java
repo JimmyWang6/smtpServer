@@ -22,6 +22,9 @@ public class UserServiceImpl implements UserService {
         user.setNickName(nickName);
         userMapper.insert(user);
     }
+    public void delete(int id){
+        userMapper.deleteByPrimaryKey(id);
+    }
 
     @Override
     public User get(int id) {
@@ -30,7 +33,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUserList() {
-        return null;
+        UserExample userExample = new UserExample();
+        return userMapper.selectByExample(userExample);
+    }
+
+    @Override
+    public List<User> search(String userName) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUserNameLike(userName);
+        return userMapper.selectByExample(userExample);
     }
 
     @Override

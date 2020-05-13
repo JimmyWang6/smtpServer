@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 @EntityScan({"net.novaborn.entity"})
 @MapperScan("net.novaborn.dao")//Mybatis的DAO所在包,这是必要的，因为SpringBootApplication，只负责扫描Service
-@ComponentScan({"net.novaborn.controller","net.novaborn.smtp","net.novaborn.pop","net.novaborn.config"})
+@ComponentScan({"net.novaborn.controller","net.novaborn.smtp","net.novaborn.pop","net.novaborn.config","net.novaborn.Service","net.novaborn.ServiceImpl"})
 public class SmtpServerApplication {
 
     public static void main(String[] args) {
