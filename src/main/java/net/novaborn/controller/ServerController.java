@@ -16,6 +16,7 @@ public class ServerController {
     PopServer popServer;
     @Autowired
     ServerConfig serverConfig;
+
     @RequestMapping("SmtpServerRun")
     public void SmtpServerRun() throws Exception {
         smtpServer.startupServer();
@@ -29,6 +30,10 @@ public class ServerController {
     @RequestMapping("getSmtpStatus")
     public boolean getSmtpStatus() throws Exception {
        return smtpServer.getSEVER_STATUS();
+    }
+    @RequestMapping("getConfig")
+    public ServerConfig getServerConfig(){
+        return this.serverConfig;
     }
 
 
