@@ -20,7 +20,7 @@ public class UserController {
     public void delete(int id){
         userServiceImpl.delete(id);
     }
-    @RequestMapping("delete")
+    @RequestMapping("search")
     public List<User> search(String userName){
         return userServiceImpl.search(userName);
     }
