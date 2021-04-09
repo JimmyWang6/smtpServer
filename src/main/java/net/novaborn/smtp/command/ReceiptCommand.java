@@ -26,6 +26,7 @@ public class ReceiptCommand extends BaseCommand {
             return smtpSession;
         }
         else if (smtpSession.getEmailModel().getTo().size() >= serverConfig.getMaxRecipients()) {
+            System.out.println("recipents："+smtpSession.getEmailModel().getTo().size() + " " +serverConfig.getMaxRecipients());
                 smtpSession.Write("452 Error: too many recipients\r\n");
             return smtpSession;
         }

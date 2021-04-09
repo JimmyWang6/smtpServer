@@ -21,14 +21,14 @@ public class RetrCommand extends BaseCommand {
         String[] args = this.getArgs(commandString);
         List<Mailbox> emailList = popSession.getEmail();
         if (args.length < 2) {
-            popSession.Write("-Err bad syntax\r\n");
+            popSession.Write("-ERR bad syntax\r\n");
         } else {
             try {
                 int index = Integer.parseInt(args[1]);
                 if (index <= 0) {
-                    popSession.Write("-Err The parameter must be a positive integer\r\n");
+                    popSession.Write("-ERR The parameter must be a positive integer\r\n");
                 } else if (index > emailList.size()) {
-                    popSession.Write("-Err Message not exists\r\n");
+                    popSession.Write("-ERR Message not exists\r\n");
                 } else {
                     // 用户输入1，其实是查看emaillist里第0个信件
                     Mailbox email = emailList.get(index - 1);
@@ -39,7 +39,7 @@ public class RetrCommand extends BaseCommand {
                     popSession.Write("\r\n.\r\n");
                 }
             } catch (NumberFormatException e) {
-                popSession.Write("-Err The parameter must be a positive integer\r\n");
+                popSession.Write("-ERR The parameter must be a positive integer\r\n");
             }
         }
     }

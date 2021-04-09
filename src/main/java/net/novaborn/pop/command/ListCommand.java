@@ -30,16 +30,16 @@ public class ListCommand extends BaseCommand {
             try {
                 int index = Integer.parseInt(args[1]);
                 if (index <= 0) {
-                    popSession.Write("-Err the parameter must be a positive integer\r\n");
+                    popSession.Write("-ERR the parameter must be a positive integer\r\n");
                 } else if (index > emailList.size()) {
-                    popSession.Write("-Err Message not exists\r\n");
+                    popSession.Write("-ERR Message not exists\r\n");
                 } else {
                     // 用户输入1，其实是查看emaillist里第0个信件
                     index--;
                     popSession.Write("+OK " + index + " " + emailList.get(index).getSize() + "\r\n");
                 }
             } catch (NumberFormatException e) {
-                popSession.Write("-Err the parameter must be a positive integer\r\n");
+                popSession.Write("-ERR the parameter must be a positive integer\r\n");
             }
         }
     }

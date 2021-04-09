@@ -3,6 +3,7 @@ package net.novaborn.dao;
 import java.util.List;
 import net.novaborn.entity.Mail;
 import net.novaborn.entity.MailExample;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -35,4 +36,7 @@ public interface MailMapper {
     int updateByPrimaryKeyWithBLOBs(Mail record);
 
     int updateByPrimaryKey(Mail record);
+
+    @Delete("delete from MailBox where uid = #{id,jdbcType=INTEGER}")
+    int deleteAllMailOfUser(int id);
 }

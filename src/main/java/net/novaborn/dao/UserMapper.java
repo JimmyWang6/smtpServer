@@ -5,6 +5,7 @@ import net.novaborn.entity.User;
 import net.novaborn.entity.UserExample;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -35,4 +36,18 @@ public interface UserMapper {
     @Select("select * from User where userName=#{userName}")
     User selectByUserName(@Param("userName") String userName);
     //////////////////////////////
+
+
+
+    @Select("select * from User where userName = #{username} and password = #{password} " +
+            "and type = 1")
+    User selectAdmin(String username,String password);
+
+
+    @Select("select * from User where type = 0")
+    List<User> selectAll();
+
+    @Update("update user set password = #{newpass,jdbcType=VARCHAR} where username = #{username,jdbcType=VARCHAR} and " +
+            "password = #{oldpass,jdbcType=VARCHAR}")
+    int updatePassword(String username,String oldpass,String newpass);
 }

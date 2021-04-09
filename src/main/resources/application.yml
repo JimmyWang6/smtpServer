@@ -3,11 +3,19 @@ server:
 
 spring:
   datasource:
-    username: root
-    password: 1999611a
-    url: jdbc:mysql://wangzhiwang.online:3306/email?serverTimezone=UTC
+    username:
+    password:
+    url:
     driver-class-name: com.mysql.jdbc.Driver
-
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: false
+      idle-timeout: 30000
+      max-lifetime: 60000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      validation-timeout: 3000
   devtools:
     restart:
       enabled: true

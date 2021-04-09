@@ -29,7 +29,7 @@ public class RequireAuthCommandWrapper implements Command {
         if (!serverConfig.isPopServerRequireAuth() || popSession.isLogin()) { //配置中不需要登陆或者会话中已经登陆了才执行命令
             wrapped.execute(commandString, popSession);
         } else {    // 否则报错
-            popSession.Write("-Err Authentication required\r\n");
+            popSession.Write("-ERR Authentication required\r\n");
         }
     }
 

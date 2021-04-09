@@ -22,15 +22,15 @@ public class TopCommand extends BaseCommand {
         String[] args = this.getArgs(commandString);
         List<Mailbox> emailList = popSession.getEmail();
         if (args.length < 3) {
-            popSession.Write("-Err bad syntax\r\n");
+            popSession.Write("-ERR bad syntax\r\n");
         } else {
             try {
                 int index = Integer.parseInt(args[1]);
                 int topLine = Integer.parseInt(args[2]);
                 if (index <= 0 || topLine < 0) {    // 第一个参数必须为正整数，第二个参数必须为自然数
-                    popSession.Write("-Err the first parameter must be a positive integer and the second parameter must be a natural number\r\n");
+                    popSession.Write("-ERR the first parameter must be a positive integer and the second parameter must be a natural number\r\n");
                 } else if (index > emailList.size()) {
-                    popSession.Write("-Err Message not exists");
+                    popSession.Write("-ERR Message not exists");
                 } else {
                     // 用户输入1，其实是查看emaillist里第0个信件
                     Mailbox email = emailList.get(index - 1);
@@ -59,7 +59,7 @@ public class TopCommand extends BaseCommand {
                     }
                 }
             } catch (NumberFormatException e) {
-                popSession.Write("-Err the parameter must be a positive integer\r\n");
+                popSession.Write("-ERR the parameter must be a positive integer\r\n");
             }
         }
     }

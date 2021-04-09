@@ -96,34 +96,34 @@ public class CommandHandler {
                         return smtpSession;
                     }
                 }else{
-                        if (commandString.equals(".")){
-                            smtpSession.Write("250 Ok\r\n");
-                            smtpSession.getEmailModel().setEmailStr(smtpSession.getBuf().toString());
-                            Mailbox mailbox = new Mailbox();
-                            String data = smtpSession.getBuf().toString();
-                            mailbox.setData(data);
-                            mailbox.setId(smtpSession.getUser().getId());
-                            mailbox.setSize(data.getBytes().length);
-                            mailbox.setFrom(smtpSession.getEmailModel().getFrom());
-                            mailbox.setDate(new Date());
-                            for (String str:smtpSession.getEmailModel().getTo()
-                                 ) {
-                                mailbox.setTo(str);
-                                mailboxMapper.insert(mailbox);
-                            }
+                    if (commandString.equals(".")){
+                        smtpSession.Write("250 Ok\r\n");
+                        smtpSession.getEmailModel().setEmailStr(smtpSession.getBuf().toString());
+                        Mailbox mailbox = new Mailbox();
+                        String data = smtpSession.getBuf().toString();
+                        mailbox.setData(data);
+                        mailbox.setId(smtpSession.getUser().getId());
+                        mailbox.setSize(data.getBytes().length);
+                        mailbox.setFrom(smtpSession.getEmailModel().getFrom());
+                        mailbox.setDate(new Date());
+                        for (String str:smtpSession.getEmailModel().getTo()
+                             ) {
+                            mailbox.setTo(str);
+                            mailboxMapper.insert(mailbox);
+                        }
 //                            MimeMessage mimeMessage = GreenMailUtil.newMimeMessage(smtpSession.getBuf().toString());
 //
-                            smtpSession.resetMailTransaction();
-                            return smtpSession;
-                        }
-                        else if(commandString.startsWith(".")){
-                           smtpSession.setBuf(println(smtpSession.getBuf(),commandString.substring(1)));
-                           return smtpSession;
-                        }else{
-                            smtpSession.setBuf(println(smtpSession.getBuf(),commandString));
-                        }
+                        smtpSession.resetMailTransaction();
                         return smtpSession;
                     }
+                    else if(commandString.startsWith(".")){
+                       smtpSession.setBuf(println(smtpSession.getBuf(),commandString.substring(1)));
+                       return smtpSession;
+                    }else{
+                        smtpSession.setBuf(println(smtpSession.getBuf(),commandString));
+                    }
+                    return smtpSession;
+                }
 
             }
 

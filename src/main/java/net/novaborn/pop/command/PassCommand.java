@@ -25,9 +25,9 @@ public class PassCommand extends BaseCommand {
     public void execute(String commandString, PopSession popSession) throws IOException {
         String[] args = this.getArgs(commandString);
         if (args.length < 2) {
-            popSession.Write("-Err AUTH mechanism mismatch\r\n");
+            popSession.Write("-ERR AUTH mechanism mismatch\r\n");
         } else if (popSession.getUser().getUserName() == null) {    // 如果没有用户名则提示
-            popSession.Write("-Err USER command first\r\n");
+            popSession.Write("-ERR USER command first\r\n");
         } else {
             String password = args[1];
 
@@ -51,10 +51,10 @@ public class PassCommand extends BaseCommand {
                 if (popSession.setEmail(emailList)) {
                     popSession.Write("+OK\r\n");
                 } else {
-                    popSession.Write("-Err get emails failed\r\n");
+                    popSession.Write("-ERR get emails failed\r\n");
                 }
             } else {
-                popSession.Write("-Err authentication failed\r\n");
+                popSession.Write("-ERR authentication failed\r\n");
             }
         }
     }
