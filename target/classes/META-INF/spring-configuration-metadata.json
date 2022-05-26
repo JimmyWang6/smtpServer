@@ -1,0 +1,49 @@
+{
+  "groups": [
+    {
+      "name": "server",
+      "type": "net.novaborn.config.ServerConfig",
+      "sourceType": "net.novaborn.config.ServerConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "server.authenticated",
+      "type": "java.lang.Boolean",
+      "sourceType": "net.novaborn.config.ServerConfig"
+    },
+    {
+      "name": "server.hostname",
+      "type": "java.lang.String",
+      "sourceType": "net.novaborn.config.ServerConfig"
+    },
+    {
+      "name": "server.max-message-size",
+      "type": "java.lang.Integer",
+      "sourceType": "net.novaborn.config.ServerConfig"
+    },
+    {
+      "name": "server.max-recipients",
+      "type": "java.lang.Integer",
+      "sourceType": "net.novaborn.config.ServerConfig"
+    },
+    {
+      "name": "server.pop-server-require-auth",
+      "type": "java.lang.Boolean",
+      "sourceType": "net.novaborn.config.ServerConfig"
+    },
+    {
+      "name": "server.popport",
+      "type": "java.lang.Integer",
+      "sourceType": "net.novaborn.config.ServerConfig",
+      "defaultValue": 0
+    },
+    {
+      "name": "server.smtpport",
+      "type": "java.lang.Integer",
+      "sourceType": "net.novaborn.config.ServerConfig",
+      "defaultValue": 0
+    }
+  ],
+  "hints": []
+}
